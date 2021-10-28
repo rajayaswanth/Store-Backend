@@ -31,7 +31,7 @@ public class ProductController {
 	}
 	
 	@GetMapping("/product")
-	List<Product> getAllProductsCurrencies() {
+	List<Product> getAllProducts() {
 		return productRepo.findAll();
 	}
 	

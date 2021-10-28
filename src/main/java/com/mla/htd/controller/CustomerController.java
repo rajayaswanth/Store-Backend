@@ -31,7 +31,7 @@ public class CustomerController {
 	}
 	
 	@GetMapping("/customer")
-	List<Customer> getAllCustomersCurrencies() {
+	List<Customer> getAllCustomers() {
 		return customerRepo.findAll();
 	}
 	
