@@ -1,7 +1,5 @@
 package com.mla.htd.jwt.config;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +14,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
 
 @Configuration
 @EnableWebSecurity
@@ -54,13 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		// We don't need CSRF for this example
-		httpSecurity.cors().configurationSource(request -> {
-		      CorsConfiguration cors = new CorsConfiguration();
-		      cors.setAllowedOrigins(List.of("*"));
-		      cors.setAllowedMethods(List.of("GET","POST", "PUT", "DELETE", "OPTIONS"));
-		      cors.setAllowedHeaders(List.of("*"));
-		      return cors;
-		    }).and().csrf().disable()
+		httpSecurity.cors().and().csrf().disable()
 				// dont authenticate this particular request
 				.authorizeRequests().antMatchers(
 						"/authenticate",
